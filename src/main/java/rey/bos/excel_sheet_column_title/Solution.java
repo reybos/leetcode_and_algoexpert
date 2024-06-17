@@ -21,5 +21,5 @@ public class Solution {
         result.append(dict[columnNumber - 1]);
         return result.reverse().toString();
     }
-    
+
 }
