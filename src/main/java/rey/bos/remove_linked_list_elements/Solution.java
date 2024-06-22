@@ -1,7 +1,7 @@
 package rey.bos.remove_linked_list_elements;
 
 class Solution {
-    
+
     public ListNode removeElements(ListNode head, int val) {
         ListNode result = null;
         ListNode temp = null;
