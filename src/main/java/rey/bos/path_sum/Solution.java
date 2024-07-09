@@ -21,7 +21,6 @@ public class Solution {
             || hasPathSum(root.right, targetSum, root.val + sum);
     }
 
-
     public static class TreeNode {
         int val;
         TreeNode left;
