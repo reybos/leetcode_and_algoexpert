@@ -12,7 +12,6 @@ public class Main {
 				System.out.println("test " + i + " passed");
 			} else {
 				System.out.println("test " + i + " failed");
-
 			}
 		}
     }
