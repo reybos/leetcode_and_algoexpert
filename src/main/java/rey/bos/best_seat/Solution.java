@@ -3,7 +3,6 @@ package rey.bos.best_seat;
 public class Solution {
 
     public static int bestSeat(int[] seats) {
-        //1, 0, 1, 0, 0, 0, 1
         int size = 0;
         int index = -1;
         int leftPointer = 0;
