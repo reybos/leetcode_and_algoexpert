@@ -39,7 +39,31 @@ public class Solution {
         }
 
         public BST remove(int value) {
+            if (this.left != null || this.right != null) {
+
+            }
             return this;
+        }
+
+        private void remove(int value, BST nod, BST root) {
+            if (nod.value == value) {
+
+            } else if (nod.value > value) {
+                if (nod.left != null) {
+                    remove(value, nod.left, nod);
+                }
+            } else {
+                if (nod.right != null) {
+                    remove(value, nod.right, nod);
+                }
+            }
+        }
+
+        private int min(BST root) {
+            if (root.left == null) {
+                return root.value;
+            }
+            return min(root.left);
         }
 
     }
