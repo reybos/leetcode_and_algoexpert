@@ -17,12 +17,24 @@ public class Solution {
                 tail.prev = head;
             } else {
                 node.next = head;
+                head.prev = node;
                 head = node;
             }
         }
 
         public void setTail(Node node) {
-            // Write your code here.
+            if (tail == null) {
+                tail = node;
+                head = node;
+            } else if (tail.equals(head)) {
+                node.prev = head;
+                tail = node;
+                head.next = tail;
+            } else {
+                node.prev = tail;
+                tail.next = node;
+                tail = node;
+            }
         }
 
         public void insertBefore(Node node, Node nodeToInsert) {
@@ -38,11 +50,50 @@ public class Solution {
         }
 
         public void removeNodesWithValue(int value) {
-            // Write your code here.
+            Node curr = head;
+            while (curr != null) {
+                Node delete = curr;
+                curr = curr.next;
+                if (delete.value == value) {
+                    if (head.equals(tail)) {
+                        head = null;
+                        tail = null;
+                    } else if (head.equals(delete)) {
+                        head = head.next;
+                        head.prev = null;
+                    } else if (tail.equals(delete)) {
+                        tail = tail.prev;
+                        tail.next = null;
+                    } else {
+                        delete.prev.next = delete.next;
+                        delete.next.prev = delete.prev;
+                    }
+                }
+            }
         }
 
         public void remove(Node node) {
-            // Write your code here.
+            if (node == null) {
+                return;
+            }
+            if (head.equals(node)) {
+                head = head.next;
+                head.prev = null;
+                return;
+            } else if (tail.equals(node)) {
+                tail = tail.prev;
+                tail.next = null;
+                return;
+            }
+            Node curr = head;
+            while (curr.next != null && !curr.next.equals(node)) {
+                curr = curr.next;
+            }
+            if (curr.next == null) {
+                return;
+            }
+            curr.next = curr.next.next;
+            curr.next.prev = curr;
         }
 
     }
