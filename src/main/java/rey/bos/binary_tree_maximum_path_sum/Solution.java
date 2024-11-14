@@ -2,44 +2,21 @@ package rey.bos.binary_tree_maximum_path_sum;
 
 class Solution {
     public int maxPathSum(TreeNode root) {
-        BranchInfo left = calc(root.left);
-        BranchInfo right = calc(root.right);
-        int maxPath = Math.max(left.maxPath, right.maxPath);
-        int maxBranch = Math.max(
-            Math.max(root.val, root.val + left.maxBranch + right.maxBranch),
-            Math.max(root.val + right.maxBranch, root.val + left.maxBranch)
-        );
-        return Math.max(maxPath, maxBranch);
+        int[] max = new int[1];
+        max[0] = Integer.MIN_VALUE;
+        check(root, max);
+        return max[0];
     }
 
-    private BranchInfo calc(TreeNode root) {
-        if (root == null) {
-            return new BranchInfo(-1001, -1001);
-        } else if (root.left == null && root.right == null) {
-            return new BranchInfo(root.val, root.val);
-        }
-        BranchInfo left = calc(root.left);
-        BranchInfo right = calc(root.right);
+    private int check(TreeNode root, int[] max) {
+        if (root == null) return 0;
 
-        int branch = Math.max(Math.max(left.maxBranch + root.val, right.maxBranch + root.val), root.val);
-        int path = Math.max(
-            Math.max(
-                Math.max(left.maxPath, right.maxPath),
-                Math.max(left.maxBranch + root.val, right.maxBranch + root.val)
-            ),
-            Math.max(left.maxBranch + root.val + right.maxBranch, root.val)
-        );
-        return new BranchInfo(path, branch);
-    }
+        int left = Math.max(0, check(root.left, max));
+        int right = Math.max(0, check(root.right, max));
 
-    static class BranchInfo {
-        int maxPath;
-        int maxBranch;
+        max[0] = Math.max(max[0], root.val + left + right);
 
-        public BranchInfo(int maxPath, int maxBranch) {
-            this.maxPath = maxPath;
-            this.maxBranch = maxBranch;
-        }
+        return root.val + Math.max(left, right);
     }
 
     public class TreeNode {
