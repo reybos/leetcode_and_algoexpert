@@ -1,6 +1,5 @@
 package rey.bos.test;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,10 +35,5 @@ public class Test {
         return List.of();
     }
 
-    private static void creat(char[] arr, ) {
-        //O O
-        //O O H
-        //3 + 3  + 3 +
-    }
 
 }
