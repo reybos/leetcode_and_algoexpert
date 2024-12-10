@@ -1,4 +1,4 @@
-package rey.bos.test;
+package rey.bos.test_jp2;
 
 import java.util.ArrayList;
 import java.util.List;
